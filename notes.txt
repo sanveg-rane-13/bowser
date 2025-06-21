@@ -1,0 +1,53 @@
+1. Browser Code Concepts
+
+- Browsers implement -> inversion of control, constraint programming, and declarative programming
+    - web inverts control, with an intermediary—the browser—handling most of the rendering, and the web developer specifying rendering parameters and content to this intermediary
+    - parameters usually take the form of constraints between the relative sizes and positions of on-screen elements
+    - declarative style means that from the point of view of a developer, changes “apply immediately”, but under the hood, the browser can be lazy and delay applying the changes until they become externally visible
+
+- A browser contains a rendering engine more complex and powerful than any computer game; 
+    a full networking stack; clever data structures and parallel programming techniques; 
+    a virtual machine, an interpreted language, and a just-in-time compiler; a world-class security sandbox; 
+    and a uniquely dynamic system for storing data.
+
+- “As We May Think” highlighted two features of the memex: information record lookup, and associations between related records
+
+Q. iii-1 What comes next? Based on what you learned about how the web came about and took its current form, what trends do you predict for its future evolution? For example, do you think it’ll compete effectively against other non-web technologies and platforms?
+A. We are currently seeing an explosion of AI technologies which are mostly WEB based. The browsers soon might culminate into a single standard to support AI tools like ChatGPT and Co-Pilot to better serve the user base. 
+   Webpages on it's own might lose value but companies probably would start fighting on advertising and controlling the AI agents. Based on the questions asked, the AI agent could easily show support towards one product over another.
+   It terms of browsers though, I see very few would be developed now and a very rare possibility of a 3rd war as AI war has already begun.
+
+Q. iii-2 What became of the original ideas? The way the web works in practice is significantly different than the memex; one key difference is that there is no built-in way for the user of the web to add links between pages or notate them. Why do you think this is? Can you think of other goals from the original work that remain unrealized?
+A. Though web-browsers couldn't become the memex for humans, AI would definitely end up being memex or better. Despite the fact that AI might completely take over coding, it would still pay for people to learn and understand the basics of where it all began. The knowledge would definitely come handy at some point.
+
+
+2. Loading Pages - downloading web pages
+
+- Browsing the internet starts with a URL --> scheme://hostname/path (how - where - what)
+
+- Browser tells OS to set up a connection to resource (where) eg. telnet (windows) / nc (macOs)
+    - eg. nc -v google.com 80
+    - OS converts the host name to IP Address using DNS and connects to the IP Address of the server
+
+- Browser requests information from the server and indicates the resource required (what)
+
+- The server responds with CODE:
+    the 100s are informational messages;
+    the 200s mean you were successful;
+    the 300s request follow-up action (usually a redirect);
+    the 400s mean you sent a bad request;
+    the 500s mean the server handled the request badly;
+
+- The OS provides a feature called “sockets” for connecting to hosts / servers
+    - A socket has an address family, which tells you how to find the other computer
+    - eg. AF_INET
+
+- The Content-Encoding header lets the server compress web pages before sending them
+    - The browser needs to send an Accept-Encoding header in its request to list the compression algorithms it supports
+    - Transfer-Encoding is similar and also allows the data to be “chunked”
+
+- Encrypted connection: HTTPS scheme
+    - HTTPS scheme is HTTP over TLS (Transport layer security)
+    - The communication between browser and host is Encrypted
+    - The Python ssl library implements all of these details 
+    - ssl.create_default_context() for creating encryption context
