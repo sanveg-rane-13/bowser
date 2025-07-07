@@ -1,3 +1,5 @@
+========
+
 1. Browser Code Concepts
 
 - Browsers implement -> inversion of control, constraint programming, and declarative programming
@@ -20,6 +22,7 @@ A. We are currently seeing an explosion of AI technologies which are mostly WEB 
 Q. iii-2 What became of the original ideas? The way the web works in practice is significantly different than the memex; one key difference is that there is no built-in way for the user of the web to add links between pages or notate them. Why do you think this is? Can you think of other goals from the original work that remain unrealized?
 A. Though web-browsers couldn't become the memex for humans, AI would definitely end up being memex or better. Despite the fact that AI might completely take over coding, it would still pay for people to learn and understand the basics of where it all began. The knowledge would definitely come handy at some point.
 
+========
 
 2. Loading Pages - downloading web pages
 
@@ -51,3 +54,12 @@ A. Though web-browsers couldn't become the memex for humans, AI would definitely
     - The communication between browser and host is Encrypted
     - The Python ssl library implements all of these details 
     - ssl.create_default_context() for creating encryption context
+
+========
+
+3. Drawing to the screen
+
+- desktop controls the screen and programs control their windows
+- package tkinter - provides graphical toolkit
+
+- 

@@ -29,7 +29,7 @@ class URL:
             eg. http://example.org/
             """
             self.type = URL_TYPE.WEB
-            self.__parse_web_url__(self, url)
+            self.__parse_web_url__(url)
 
         else:
             raise Exception("Soweee... Bowser can't help you!")

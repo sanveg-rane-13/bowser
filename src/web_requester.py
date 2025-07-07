@@ -19,15 +19,14 @@ class WebRequester(Requester):
         }
 
 
-    def request_url(self, url: URL, params: dict):
-        assert url.get_url_type == URL_TYPE.WEB
-
+    def request_url(self, url: URL, params: dict) -> str:
+        assert url.get_url_type() == URL_TYPE.WEB
         req = f"GET {url.path} {self.scheme_map[url.scheme]}\r\n"
         
-        if "Host" not in headers:
+        if "Host" not in params:
             req += f"Host: {url.host}\r\n"
         
-        for key, val in headers.items():
+        for key, val in params.items():
             req += f"{key}: {val}\r\n"
         req += "\r\n"
 
@@ -47,12 +46,11 @@ class WebRequester(Requester):
             secure_conn.close()
         
         if response is not None:
-            self.inspect_headers(response)
-            content = response.read()
-            self.show(content)
+            self.__inspect_headers__(response)
+            return self.__parse_body__(response.read())
+            
 
-
-    def inspect_headers(self, response):
+    def __inspect_headers__(self, response):
         statusline = response.readline()
         version, status, explanation = statusline.split(" ", 2)
 
@@ -69,7 +67,8 @@ class WebRequester(Requester):
         print(f"Received response with status = {status}")
 
     
-    def show(self, body):
+    def __parse_body__(self, body):
+        parsed_text = ""
         in_tag = False
 
         for ch in body:
@@ -80,4 +79,6 @@ class WebRequester(Requester):
                 in_tag = False
             
             elif not in_tag:
-                print(ch, end="")
+                parsed_text += ch
+
+        return parsed_text
