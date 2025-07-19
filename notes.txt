@@ -62,4 +62,7 @@ A. Though web-browsers couldn't become the memex for humans, AI would definitely
 - desktop controls the screen and programs control their windows
 - package tkinter - provides graphical toolkit
 
-- 
+- scrolling
+- fast rendering - redraw at a speed equal to the refresh rate, or frame rate, of the screen (60Hz)
+    - browser has to render within 1/60th of sec -> 16ms (animation frame budget)
+    

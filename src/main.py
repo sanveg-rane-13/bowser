@@ -6,7 +6,7 @@ from url import URL, URL_TYPE
 from file_requester import FileRequester
 from web_requester import WebRequester
 from window_renderer import WindowRenderer
-
+                                            
 
 class Bowser:
     '''
